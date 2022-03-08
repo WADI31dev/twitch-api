@@ -20,7 +20,7 @@ Twitch
 Finally using only `twitchtracker.com` to get theses infos :
 
 ```
-    - current # of followers"
+    - current # of followers
     - # of followers of last month
     - # of followers 2 months ago
     - "# of followers 3 months ago
@@ -42,7 +42,7 @@ Using `FastApi` to get the result of the scapper as a `json`
 Api Endpoint :
 `localhost:8080/:twitcher`
 
-to debug Api or different endpoints :
+to debug Api or to get all different endpoints :
 `localhost:8080/docs`
 
 ## local test
@@ -64,6 +64,6 @@ make deploy_image
 
 ``` bash
 gsutil ls -R gs://le-wagon-data
-gsutil cp alexandro.csv gs://le-wagon-data/twitch/db.sqlite
+gsutil cp db.sqlite gs://le-wagon-data/twitch/db.sqlite
 gsutil cp gs://le-wagon-data/twitch/db.sqlite .
 ```
