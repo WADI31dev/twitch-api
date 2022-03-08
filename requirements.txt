@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pandas
+google-cloud-storage
+gcsfs
+selenium
+chromedriver-binary
+webdriver-manager
+beautifulsoup4
