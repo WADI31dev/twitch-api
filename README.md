@@ -23,12 +23,12 @@ Finally using only `twitchtracker.com` to get theses infos :
     - current # of followers
     - # of followers of last month
     - # of followers 2 months ago
-    - "# of followers 3 months ago
+    - # of followers 3 months ago
     - Avg growth rate of new followers (%)
     - current # of subscribers
     - # of subscribers of last month
     - # of subscribers 2 months ago
-    - "# of subscribers 3 months ago
+    - # of subscribers 3 months ago
     - Avg growth rate of new subscribers on 3 last months (%)
     - Avg CCr views on last stream
     - Avg CCr views on second last stream
@@ -63,7 +63,7 @@ make deploy_image
 # manual commands
 
 ``` bash
-gsutil ls -R gs://le-wagon-data
-gsutil cp db.sqlite gs://le-wagon-data/twitch/db.sqlite
-gsutil cp gs://le-wagon-data/twitch/db.sqlite .
+gsutil ls -R gs://bucket-name
+gsutil cp db.sqlite gs://bucket-name/twitch/db.sqlite
+gsutil cp gs://bucket-name/twitch/db.sqlite .
 ```
