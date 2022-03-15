@@ -11,21 +11,21 @@ from bs4 import BeautifulSoup
 import chromedriver_binary
 import json 
 
-
+#number of sub posing problem
 def get_general_infos(url, driver):
     driver.get(url)
     wait = WebDriverWait(driver, 15)
     wait.until(ec.visibility_of_element_located((By.XPATH, "//*[@id=\"content-wrapper\"]")))
     nbr_followers = int(driver.find_element(By.CSS_SELECTOR, "li.list-group-item:nth-child(4) > div:nth-child(1) \
                                             > div:nth-child(2) > span:nth-child(2)").text.replace(",", ""))
-    nbr_subs = int(driver.find_element(By.CSS_SELECTOR, "div.g-x-wrapper:nth-child(7) > div:nth-child(1) \
-                                       > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)").text.replace(",", ""))
+    nbr_subs = int(driver.find_element(By.CSS_SELECTOR, "div.g-x-wrapper:nth-child(6) > div:nth-child(1) > div:nth-child(2) \
+        > div:nth-child(1) > div:nth-child(1)").text.replace(",", ""))
     return nbr_followers, nbr_subs
 
 def get_followers_infos(url, driver):
     driver.get(url)
     wait = WebDriverWait(driver, 15)
-    wait.until(ec.visibility_of_element_located((By.XPATH, "/html/body/div[3]/div[4]")))
+    wait.until(ec.visibility_of_element_located((By.XPATH, "//*[@id=\"content-wrapper\"]/div[3]")))
     last_month_foll = int(driver.find_element(By.CSS_SELECTOR, "#DataTables_Table_1 > tbody:nth-child(2) > tr:nth-child(1) \
                                               > td:nth-child(3)").text.replace(".","").replace("M", "0000"))
 
@@ -40,7 +40,7 @@ def get_subscribers_infos(url, driver):
     # number of subs last 3 months subs
     driver.get(url)
     wait = WebDriverWait(driver, 15)
-    wait.until(ec.visibility_of_element_located((By.XPATH, "//*[@id=\"content-wrapper\"]/div[6]")))
+    wait.until(ec.visibility_of_element_located((By.XPATH, "//*[@id=\"content-wrapper\"]/div[5]")))
 
     last_month_sub = int(driver.find_element(By.CSS_SELECTOR, "#subscribers > tbody > tr:nth-child(2) > td:nth-child(2) \
                                              > b").text.replace(",",""))
@@ -53,7 +53,7 @@ def get_subscribers_infos(url, driver):
 def get_streams_infos(url, driver):
     driver.get(url)
     wait = WebDriverWait(driver, 15)
-    wait.until(ec.visibility_of_element_located((By.XPATH, "/html/body/div[3]/div[4]")))
+    wait.until(ec.visibility_of_element_located((By.XPATH, "//*[@id=\"content-wrapper\"]/div[3]")))
 
     last_stream_avg_views = int(driver.find_element(By.CSS_SELECTOR, "tr.odd:nth-child(1) > td:nth-child(3) \
                                                     > span:nth-child(1)").text.replace(",", ""))
@@ -103,4 +103,4 @@ def twitch(creator):
     }
     return values # json.dumps(values) #, indent = 4
 
-# print(twitch("pokimane"))
+print(twitch("pokimane"))

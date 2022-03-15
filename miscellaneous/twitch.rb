@@ -5,18 +5,18 @@ require 'pp'
 def get_general_infos(url, driver)
     driver.get(url)
     wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    wait.until { driver.find_element(:xpath, '//*[@id="content-wrapper"]').displayed?  }
+    wait.until { driver.find_element(:css, "#content-wrapper > div.container").displayed?  }
     nbr_followers = driver.find_element(:css, "li.list-group-item:nth-child(4) > div:nth-child(1) \
                                           > div:nth-child(2) > span:nth-child(2)").text.gsub(",", "").to_i
-    nbr_subs = driver.find_element(:css, "div.g-x-wrapper:nth-child(7) > div:nth-child(1) \
-                                     > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)").text.gsub(",", "").to_i
+    nbr_subs = driver.find_element(:css, "div.g-x-wrapper:nth-child(6) > div:nth-child(1) > div:nth-child(2) \
+                                            > div:nth-child(1) > div:nth-child(1)").text.gsub(",", "").to_i
     return nbr_followers, nbr_subs
 end
 
 def get_followers_infos(url, driver)
     driver.get(url)
     wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    wait.until { driver.find_element(:xpath, "/html/body/div[3]/div[4]").displayed?  }
+    wait.until { driver.find_element(:css, "#content-wrapper > div.container").displayed?  }
     last_month_foll = driver.find_element(:css, "#DataTables_Table_1 > tbody:nth-child(2) > tr:nth-child(1) \
                                               > td:nth-child(3)").text.gsub(".","").gsub("M", "0000").to_i
 
@@ -31,7 +31,7 @@ end
 def get_subscribers_infos(url, driver)
     driver.get(url)
     wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    wait.until { driver.find_element(:xpath, "//*[@id=\"content-wrapper\"]/div[6]").displayed?  }
+    wait.until { driver.find_element(:css, "#content-wrapper > div.container").displayed?  }
 
     last_month_sub = driver.find_element(:css, "#subscribers > tbody > tr:nth-child(2) > td:nth-child(2) \
                                              > b").text.gsub(",","").to_i
@@ -45,7 +45,7 @@ end
 def get_streams_infos(url, driver)
     driver.get(url)
     wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    wait.until { driver.find_element(:xpath, "/html/body/div[3]/div[4]").displayed? }
+    wait.until { driver.find_element(:css, '#content-wrapper > div.container').displayed? }
 
     last_stream_avg_views = driver.find_element(:css, "tr.odd:nth-child(1) > td:nth-child(3) \
                                                     > span:nth-child(1)").text.gsub(",", "").to_i

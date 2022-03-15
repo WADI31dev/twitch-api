@@ -45,10 +45,14 @@ Api Endpoint :
 to debug Api or to get all different endpoints :
 `localhost:8080/docs`
 
+## Result with `pokimane`
+
+![Alt text](/images/pokimane.png)
+
 ## local test
 
 ``` bash
-make run_locally
+make run_api
 ```
 
 ## container
